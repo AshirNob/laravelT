@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Home | SFTS</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta http-equiv='cache-control' content='no-cache'>
     <meta http-equiv='expires' content='0'>
     <meta http-equiv='pragma' content='no-cache'>
@@ -31,6 +32,7 @@
     <link rel="stylesheet" media="screen, print" href="{{ URL::asset('css/statistics/chartist/chartist.css') }}">
     <link rel="stylesheet" media="screen, print" href="{{ URL::asset('css/statistics/c3/c3.css') }}">
     <link rel="stylesheet" media="screen, print" href="{{ URL::asset('css/formplugins/summernote/summernote.css') }}">
+    <link rel="stylesheet" href="{{URL::asset('css/notifications/toastr/toastr.css')}}">
     <script src="{{ URL::asset('js/jquery-3.6.0.min.js') }}"></script>
 </head>
 <body class="mod-bg-1 ">
@@ -144,7 +146,7 @@
                                                 <ul>
                                                     @foreach ($menus as $page)
                                                         @if ($page->parent_id == $sub_item->id && $page->parent_id == $sub_item->id)
-                                                            <li>
+                                                            <li onclick="LoadPage('{{$page->route}}')">
                                                                 <a title="Light"
                                                                     data-filter-tags="font icons fontawesome light">
                                                                     <span class="nav-link-text no-gutters"
@@ -159,7 +161,7 @@
                                     @endforeach
                                     @foreach ($menus as $page2)
                                         @if ($page2->parent_id == $item->id && $page2->route != '0')
-                                            <li>
+                                            <li onclick="LoadPage('{{$page2->route}}')" >
                                                 <a title="Light" data-filter-tags="font icons fontawesome light">
                                                     <span class="nav-link-text no-gutters"
                                                         data-i18n="nav.font_icons_fontawesome_light">{{ $page2->title }}</span>
@@ -235,20 +237,11 @@
             </div>
         </div>
     </div>
-    <script src="{{ URL::asset('js/vendors.bundle.js') }}"></script>
-    <script src="{{ URL::asset('js/app.bundle.js') }}"></script>
-    <script src="{{ URL::asset('js/datagrid/datatables/datatables.bundle.js') }}"></script>
-    <script>
-        function LoadPage(courl) {
-            $.ajax({
-                headers: {'X-CSRF-TOKEN': '{{csrf_token()}}'},
-                url: courl,
-                success: function(result) {
-                    $("#js-page-content").html(result);
-                }
-            });
-        }
-    </script>
+    <script src="{{URL::asset('js/vendors.bundle.js')}}"></script>
+    <script src="{{URL::asset('js/app.bundle.js')}}"></script>
+    <script src="{{URL::asset('js/notifications/toastr/toastr.js')}}"></script>
+    <script src="{{URL::asset('js/datagrid/datatables/datatables.bundle.js')}}"></script>
+    <script src="{{URL::asset('js/main.js')}}"></script>
 </body>
 
 </html>

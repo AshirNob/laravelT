@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\test;
 use App\Http\Controllers\portal;
+use App\Http\Controllers\shop;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -22,7 +23,8 @@ Auth::routes();
         Route::get('/dashboard',[test::class,'LoadHome'])->name('dashboard');
         Route::get('/table',[test::class,'LoadTable'])->name('table');
         Route::get('/',[portal::class,'main']);
-        
+        Route::get('/addshop',[shop::class,'AddShop'])->name('addshop');
+        Route::post('/submitshop',[shop::class,'SubmitShop'])->name('submitshop');
     });
 
    

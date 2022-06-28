@@ -14,3 +14,15 @@
 ('Reports',1,0,'0'),
 ('NonFinancial',1,14,'0'),
 ('AllVisit',0,15,'allvisits'),
+
+<input type="file" name="img_g">
+    // event.preventDefault();
+    //    for(const pair of formData.entries()) {
+    //     console.log(`${pair[0]}, ${pair[1]}`);
+    //   }
+    // let sName=document.getElementById('sName').value;
+    // let sDescription=document.getElementById('sDescription').value;
+    // let obj={
+    //     "sName":sName,
+    //     "sDescription":sDescription
+    // }
