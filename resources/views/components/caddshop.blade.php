@@ -18,11 +18,11 @@
                
                         <div class="form-group">
                             <label class="form-label" for="simpleinput">Shop Name</label>
-                            <input type="text" id="sName" name="shopname" class="form-control">
+                            <input type="text" id="sName" name="shopname" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="simpleinput">Shop Description</label>
-                            <input type="text" id="sDescription" name="shopdescription" class="form-control">
+                            <input type="text" id="sDescription" name="shopdescription" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary" >Submit</button>
                     </form>

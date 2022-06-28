@@ -25,6 +25,8 @@ Auth::routes();
         Route::get('/',[portal::class,'main']);
         Route::get('/addshop',[shop::class,'AddShop'])->name('addshop');
         Route::post('/submitshop',[shop::class,'SubmitShop'])->name('submitshop');
+        Route::get('/viewshops',[shop::class,'ViewAllShop'])->name('viewshops');
+        Route::get('/shopfields/{id}',[shop::class,'ShopFields']);
     });
 
    

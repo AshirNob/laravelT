@@ -78,7 +78,7 @@ function postData(pUrl,pData,gUrl){
         console.log(result);
 
 
-        // LoadPage(gUrl);
+         LoadPage(gUrl);
           showSuccessToast('Success','New shop has been create');
           
         },
