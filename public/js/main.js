@@ -1,11 +1,5 @@
 
-window.onload=()=>{
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-}
+
 function DisbaleButton(form){
     let btn= $(form).last();
     btn.disabled=true;
@@ -62,6 +56,7 @@ function showErrorToast(title,msg){
 }
 
  function  LoadPage(courl) {
+    localStorage.setItem("pageURL",courl);
      $.ajax({
         url: courl,
         success: function(result) {
@@ -69,18 +64,16 @@ function showErrorToast(title,msg){
         }
     });
 }
-function postData(pUrl,pData,gUrl){
+function postData(pUrl,pData,gUrl,sTitle,sDesc){
     $.ajax({
         type:'post',
         data:pData,
         url: pUrl,  
         success: function(result) {
+
         console.log(result);
-
-
-         LoadPage(gUrl);
-          showSuccessToast('Success','New shop has been create');
-          
+         //LoadPage(gUrl);
+         showSuccessToast(sTitle,sDesc);
         },
         error:function(err){
             showErrorToast(err,'Error');
@@ -91,7 +84,38 @@ function postData(pUrl,pData,gUrl){
 
 function SubmitFrmCreateShop(form){
     DisbaleButton(form);
-    postData('submitshop',$(form).serialize(),'addshop');
+    postData('submitshop',$(form).serialize(),'addshop','Success','Shop Created Succesfully');
     EnableButton(form);
+   
+}
+function SubmitAddFieldToShop(form){
+    $('#mdlAddField').modal('hide')
+    DisbaleButton(form);
+    let shopId=parseInt(form.elements[0].value);
+    postData('submitaddfieldtoshop',$(form).serialize(),`shopfields/${shopId}`,'Success','New Fields Assigned to Shop');
+    EnableButton(form);
+}
+function addShopFieldsData(form){
+    DisbaleButton(form);
+    let shopId=parseInt(form.elements[0].value);
+    postData('addshopfieldsdata',$(form).serialize(),`shopfields/${shopId}`,'Success','Data Inserted');
+    EnableButton(form);
+}
+function LoadShopData(){
 
 }
+window.onload=()=>{
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    LoadPage((localStorage.getItem('pageURL')));
+
+}
+
+
+
+
+
+

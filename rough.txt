@@ -26,3 +26,4 @@
     //     "sName":sName,
     //     "sDescription":sDescription
     // }
+select  formfields.type as field_type ,shopfield.id as shop_field_id, shopfield.label, shopfield.fk_shop as shop_id ,

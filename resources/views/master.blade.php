@@ -34,6 +34,7 @@
     <link rel="stylesheet" media="screen, print" href="{{ URL::asset('css/formplugins/summernote/summernote.css') }}">
     <link rel="stylesheet" href="{{URL::asset('css/notifications/toastr/toastr.css')}}">
     <script src="{{ URL::asset('js/jquery-3.6.0.min.js') }}"></script>
+  
 </head>
 <body class="mod-bg-1 ">
     <script>
@@ -127,7 +128,7 @@
                     <ul id="js-nav-menu" class="nav-menu">
                         @foreach ($menus as $item)
                             <li>
-                                @if ($item->is_parent = 1 && $item->parent_id == 0 && $item->route == '0')
+                                @if ($item->is_parent == 1 && $item->parent_id == 0 && $item->route == '0')
                                     <a>
                                         <i class="fal fa-map-marker-alt"></i>
                                         <span class="nav-link-text"
@@ -228,8 +229,8 @@
                         @csrf
                     </form>
                 </header>
-                <main id="js-page-content" role="main" class="page-content">
-                 
+              <main id="js-page-content" role="main" class="page-content">
+                   
                 </main>
                 <!-- this overlay is activated only when mobile menu is triggered -->
                 <div class="page-content-overlay" data-action="toggle" data-class="mobile-nav-on"></div>
@@ -242,6 +243,9 @@
     <script src="{{URL::asset('js/notifications/toastr/toastr.js')}}"></script>
     <script src="{{URL::asset('js/datagrid/datatables/datatables.bundle.js')}}"></script>
     <script src="{{URL::asset('js/main.js')}}"></script>
+    {{-- <script type="application/javascript" src="{{URL::asset('js/secure-webstore.js')}}"></script> --}}
+    {{-- <script type="module" src="{{URL::asset('js/devtommy.js')}}"></script> --}}
+ 
 </body>
 
 </html>

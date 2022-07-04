@@ -45,7 +45,11 @@
                                     <th>{{ $item->name }}</th>
                                     <th>{{ $item->description }}</th>
                                     <th>{{ $status }}</th>
-                                    <th><button onclick="LoadPage('shopfields/{{$item->id}}')" class="btn btn-sm btn-primary">Manage Fields</button></th>
+                                    <th>
+                                        <button onclick="LoadPage('shopfields/{{$item->id}}')" class="btn btn-sm btn-primary">Manage Fields</button>
+                                        |
+                                        <button onclick="LoadPage('ViewShopFields/{{$item->id}}')" class="btn btn-sm btn-primary">View Data</button>
+                                    </th>
                                     @php
                                         $count = $count + 1;
                                     @endphp
