@@ -21,6 +21,9 @@
                             <tr>
                                 <th>#</th>
                                 @foreach ($fields as $field)
+                                    @php
+                                        $shopId = $field->fk_shop;
+                                    @endphp
                                     <th> {{ $field->label }}</th>
                                 @endforeach
                             </tr>
@@ -70,39 +73,18 @@
                 ]
             });
         }
-        var fieldsArrray = {!! json_encode($fields, JSON_HEX_TAG) !!};
-        var fieldCount = 4;
-        var cheackFieldCount = 0;
-        var genCount = 1;
-        var html = ``;
-        $('#tblBody').html('');
+
         $.ajax({
-            url: 'getshopfields',
-            success: function(result) {
-                for (var obj of result) {
-                    if (cheackFieldCount == 0) {
-                        html += `<tr><td>${genCount}</td>`;
-                    }
-                    for (var i of fieldsArrray) {
-                        if (i.label == obj.label) {
-                            html += `<td>${obj.value}</td>`;
-                            cheackFieldCount = cheackFieldCount + 1;
-                        }
-                    }
-                    if (cheackFieldCount == 4) {
-                        cheackFieldCount = 0;
-                        html += `</tr>`;
-                    }
-                    genCount = genCount + 1;
-                }
-console.log(html);
-                //$('#tblBody').html(html);
-              //  fireDataTable();
+            url: '/getshopfields/{{ $shopId }}',
+            method: 'get',
+            success: function(res) {
+                console.log(res);
+
             }
         });
-
-
-       
-
     });
+
+
+    
+   
 </script>

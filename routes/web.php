@@ -29,7 +29,7 @@ Auth::routes();
         Route::get('/shopfields/{id}',[shop::class,'ShopFields'])->middleware('only.ajax');
         Route::post('/addshopfieldsdata',[shop::class,'AddShopFieldsData'])->middleware('only.ajax');
         Route::get('/ViewShopFields/{id}',[shop::class,'ViewShopsFields']);
-        Route::get('/getshopfields',[shop::class,'GetShopsFieldsData']);
+        Route::get('/getshopfields/{id}',[shop::class,'GetShopsFieldsData']);
     });
 
    

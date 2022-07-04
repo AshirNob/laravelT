@@ -98,8 +98,27 @@ class shop extends Controller
         $shop = new cviewshopfielddata($dev->name,$fields);
         return $shop->render();
     }
-    public function GetShopsFieldsData()
-    {
-        return DB::table('vw_get_shop_fields')->get();
+    public function GetShopsFieldsData($id)
+    {   $dev= ModelsShop::where('id',$id)->first();
+        $fields=shopfield::where('fk_shop',$dev->id)->get();
+        $data=DB::table('vw_get_shop_fields')->where('shop',$id)->get();
+        $main_arr= array();
+        $objBreakingPoint='';
+        for ($i=0; $i <count($data); $i++) { 
+           
+            if($objBreakingPoint!=$data[$i]->label){
+                $single_arr=array(
+                    $data[$i]->label =>$data[$i]->label
+                );
+            }
+
+
+            if($i==0){
+
+                $objBreakingPoint=$data[$i]->label;
+            }
+        }
+
+        return $data[1]->label;
     }
 }

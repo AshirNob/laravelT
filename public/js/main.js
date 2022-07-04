@@ -101,9 +101,7 @@ function addShopFieldsData(form){
     postData('addshopfieldsdata',$(form).serialize(),`shopfields/${shopId}`,'Success','Data Inserted');
     EnableButton(form);
 }
-function LoadShopData(){
 
-}
 window.onload=()=>{
     $.ajaxSetup({
         headers: {
